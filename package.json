@@ -4,16 +4,20 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "type-check": "tsc --noEmit",
+    "preview": "next build && next start",
     "build": "next build",
     "build:standalone": "next build && next export",
     "start": "next start",
     "start:standalone": "node .next/standalone/server.js",
     "start:production": "NODE_ENV=production node .next/standalone/server.js",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
-    "type-check": "tsc --noEmit",
-    "preview": "next build && next start",
-    "deploy:plesk": "npm run build && npm run start:standalone"
+    "copy": "mv ./.next/static ./.next/standalone/; cp -r ./public ./.next/standalone/",
+    "post-deploy": "bash post-deploy.sh",
+    "post-deploy:windows": "post-deploy.bat",
+    "deploy:plesk": "npm run build && npm run start:standalone",
+    "deploy:auto": "npm run build && npm run post-deploy"
   },
   "dependencies": {
     "react": "19.1.0",
