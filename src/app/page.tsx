@@ -51,9 +51,12 @@ export default function Home() {
             <button className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium">
               📦 Deploy to Plesk
             </button>
-            <button className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200 font-medium">
-              📚 View Documentation
-            </button>
+            <a
+              href="/about"
+              className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200 font-medium inline-block"
+            >
+              📖 About Us
+            </a>
           </div>
         </div>
 
