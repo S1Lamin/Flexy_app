@@ -55,13 +55,15 @@ const productData = {
 }
 
 interface ProductDetailPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const product = productData[params.id as keyof typeof productData]
+export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+  const { id } = await params
+  const productId = parseInt(id, 10) as keyof typeof productData
+  const product = productData[productId]
 
   if (!product) {
     return (
